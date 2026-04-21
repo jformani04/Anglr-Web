@@ -1,22 +1,31 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? '';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '';
+// Lazy singleton — only instantiated at runtime (not during build-time prerender)
+let _client: SupabaseClient | null = null;
 
-// Warn in development; on Vercel these are set as environment variables.
-if (process.env.NODE_ENV === 'development' && (!supabaseUrl || !supabaseAnonKey)) {
-  console.warn(
-    '[ANGLR] Missing Supabase env vars. Copy .env.local.example to .env.local and fill in your project values.'
-  );
+export function getSupabase(): SupabaseClient {
+  if (_client) return _client;
+
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!url || !key) {
+    throw new Error(
+      '[ANGLR] Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY. ' +
+        'Add them to .env.local (local) or Vercel Environment Variables (production).'
+    );
+  }
+
+  _client = createClient(url, key, {
+    auth: {
+      autoRefreshToken: true,
+      persistSession: true,
+      detectSessionInUrl: true,
+      flowType: 'pkce',
+    },
+  });
+
+  return _client;
 }
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    autoRefreshToken: true,
-    persistSession: true,
-    detectSessionInUrl: true,
-    flowType: 'pkce',
-  },
-});
 
 export type { User, Session } from '@supabase/supabase-js';

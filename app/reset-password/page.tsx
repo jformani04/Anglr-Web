@@ -4,7 +4,9 @@ import { Suspense, useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle2, XCircle, ShieldAlert, ArrowLeft, Lock } from 'lucide-react';
-import { supabase } from '@/lib/supabase';
+import { getSupabase } from '@/lib/supabase';
+
+export const dynamic = 'force-dynamic';
 import AnglrLogo from '@/components/AnglrLogo';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
@@ -78,7 +80,7 @@ function ResetPasswordContent() {
 
     // PKCE flow: ?code=xxx
     if (code) {
-      const { error } = await supabase.auth.exchangeCodeForSession(code);
+      const { error } = await getSupabase().auth.exchangeCodeForSession(code);
       if (error) {
         setErrorMessage(error.message);
         setState('error');
@@ -90,7 +92,7 @@ function ResetPasswordContent() {
 
     // OTP / email link flow: ?token_hash=xxx&type=recovery
     if (tokenHash && type === 'recovery') {
-      const { error } = await supabase.auth.verifyOtp({ token_hash: tokenHash, type: 'recovery' });
+      const { error } = await getSupabase().auth.verifyOtp({ token_hash: tokenHash, type: 'recovery' });
       if (error) {
         setErrorMessage(error.message);
         setState('error');
@@ -106,7 +108,7 @@ function ResetPasswordContent() {
       const accessToken = hash.get('access_token');
       const refreshToken = hash.get('refresh_token');
       if (accessToken && refreshToken) {
-        const { error } = await supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
+        const { error } = await getSupabase().auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
         if (error) {
           setErrorMessage(error.message);
           setState('error');
@@ -149,7 +151,7 @@ function ResetPasswordContent() {
     if (!validate()) return;
 
     setState('submitting');
-    const { error } = await supabase.auth.updateUser({ password });
+    const { error } = await getSupabase().auth.updateUser({ password });
 
     if (error) {
       setErrorMessage(error.message);
