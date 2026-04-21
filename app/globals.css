@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #060d1a;
+    color: #f0f4ff;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  ::selection {
+    background-color: rgba(45, 124, 246, 0.35);
+    color: #f0f4ff;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(45, 124, 246, 0.6);
+    outline-offset: 2px;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #060d1a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1a3050;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2d7cf6;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(13, 31, 53, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 4px 6px -1px rgba(0, 0, 0, 0.4),
+      0 20px 40px -8px rgba(0, 0, 0, 0.6);
+  }
+
+  .ocean-bg {
+    background:
+      radial-gradient(ellipse 90% 60% at 50% -5%, rgba(22, 78, 155, 0.45) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 85% 90%, rgba(16, 185, 129, 0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 10% 70%, rgba(22, 78, 155, 0.12) 0%, transparent 50%),
+      #060d1a;
+    background-attachment: fixed;
+  }
+
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #2d7cf6 0%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-green {
+    background: linear-gradient(135deg, #16c96a 0%, #4ade80 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+    background: linear-gradient(135deg, #2d7cf6 0%, #1a6ae0 100%);
+    box-shadow: 0 2px 8px rgba(45, 124, 246, 0.4), 0 0 0 1px rgba(45, 124, 246, 0.3);
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #3d8cf6 0%, #2578e8 100%);
+    box-shadow: 0 4px 16px rgba(45, 124, 246, 0.5), 0 0 0 1px rgba(45, 124, 246, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(45, 124, 246, 0.35);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200;
+    color: #8ba3c0;
+    background: transparent;
+  }
+
+  .btn-ghost:hover {
+    color: #f0f4ff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 placeholder:font-normal;
+    background: rgba(6, 13, 26, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #f0f4ff;
+    caret-color: #2d7cf6;
+  }
+
+  .input-field::placeholder {
+    color: #4a6280;
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: rgba(45, 124, 246, 0.5);
+    box-shadow: 0 0 0 3px rgba(45, 124, 246, 0.12);
+    background: rgba(6, 13, 26, 0.8);
+  }
+
+  .input-field.error {
+    border-color: rgba(239, 68, 68, 0.5);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  }
+
+  .divider {
+    @apply flex items-center gap-4 my-6;
+  }
+
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  /* Privacy policy typography */
+  .prose-anglr h1 {
+    @apply text-3xl font-bold text-anglr-text-primary mb-2;
+  }
+
+  .prose-anglr h2 {
+    @apply text-xl font-semibold text-anglr-text-primary mt-10 mb-4 pb-3;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .prose-anglr h3 {
+    @apply text-base font-semibold text-anglr-blue mt-6 mb-2;
+  }
+
+  .prose-anglr p {
+    @apply text-sm leading-relaxed text-anglr-text-secondary mb-4;
+  }
+
+  .prose-anglr ul {
+    @apply space-y-1.5 mb-4 ml-4;
+  }
+
+  .prose-anglr li {
+    @apply text-sm text-anglr-text-secondary leading-relaxed flex items-start gap-2;
+  }
+
+  .prose-anglr li::before {
+    content: '•';
+    color: #2d7cf6;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .prose-anglr a {
+    @apply text-anglr-blue hover:text-blue-400 underline underline-offset-2 transition-colors;
+  }
+
+  .prose-anglr strong {
+    @apply font-semibold text-anglr-text-primary;
+  }
+}

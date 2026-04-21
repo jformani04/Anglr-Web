@@ -1,2 +1,10 @@
-# Anglr-Web
-Anglr-Web is a lightweight companion for the Fishing App, providing secure password reset and essential account pages. Designed with a modern, outdoor-inspired UI, it ensures a fast, reliable, and seamless experience across devices while meeting app store requirements.
+
+---
+
+# 💡 If You Want Next
+
+I can:
+- generate your **privacy policy content (Play Store ready)**  
+- or review your reset page code before deployment  
+
+Just tell me 👍
