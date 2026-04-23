@@ -20,8 +20,10 @@ export function getSupabase(): SupabaseClient {
     auth: {
       autoRefreshToken: true,
       persistSession: true,
-      detectSessionInUrl: true,
-      flowType: 'pkce',
+      // Disable auto-detection — the reset-password page reads and exchanges
+      // tokens manually. Auto-detection with flowType:'pkce' throws on the
+      // implicit-flow hashes that Supabase recovery emails produce.
+      detectSessionInUrl: false,
     },
   });
 

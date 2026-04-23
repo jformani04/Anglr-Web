@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useCallback, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle2, XCircle, ShieldAlert, ArrowLeft, Lock } from 'lucide-react';
@@ -73,42 +73,40 @@ function ResetPasswordContent() {
   const [confirm, setConfirm] = useState('');
   const [formErrors, setFormErrors] = useState<FormErrors>({});
 
-  const verifyToken = useCallback(async () => {
-    const code = searchParams.get('code');
-    const tokenHash = searchParams.get('token_hash');
-    const type = searchParams.get('type');
+  // Capture the hash synchronously during first render, before Supabase's client
+  // auto-detects it and clears it via history.replaceState.
+  const [initialHash] = useState(() =>
+    typeof window !== 'undefined' ? window.location.hash : ''
+  );
 
-    // PKCE flow: ?code=xxx
-    if (code) {
-      const { error } = await getSupabase().auth.exchangeCodeForSession(code);
-      if (error) {
-        setErrorMessage(error.message);
-        setState('error');
-      } else {
-        setState('ready');
+  useEffect(() => {
+    async function verifyToken() {
+      // Priority 1: Hash-based implicit flow — Supabase recovery emails land here.
+      // Must be checked first and from the pre-captured hash, since Supabase clears
+      // the URL hash before async effects can read window.location.hash.
+      if (initialHash.includes('access_token')) {
+        const hashParams = new URLSearchParams(initialHash.slice(1));
+        const accessToken = hashParams.get('access_token');
+        const refreshToken = hashParams.get('refresh_token');
+        if (accessToken && refreshToken) {
+          const { error } = await getSupabase().auth.setSession({
+            access_token: accessToken,
+            refresh_token: refreshToken,
+          });
+          if (error) {
+            setErrorMessage(error.message);
+            setState('error');
+          } else {
+            setState('ready');
+          }
+          return;
+        }
       }
-      return;
-    }
 
-    // OTP / email link flow: ?token_hash=xxx&type=recovery
-    if (tokenHash && type === 'recovery') {
-      const { error } = await getSupabase().auth.verifyOtp({ token_hash: tokenHash, type: 'recovery' });
-      if (error) {
-        setErrorMessage(error.message);
-        setState('error');
-      } else {
-        setState('ready');
-      }
-      return;
-    }
-
-    // Hash-based implicit flow: #access_token=xxx
-    if (typeof window !== 'undefined' && window.location.hash.includes('access_token')) {
-      const hash = new URLSearchParams(window.location.hash.slice(1));
-      const accessToken = hash.get('access_token');
-      const refreshToken = hash.get('refresh_token');
-      if (accessToken && refreshToken) {
-        const { error } = await getSupabase().auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
+      // Priority 2: PKCE flow (?code=xxx)
+      const code = searchParams.get('code');
+      if (code) {
+        const { error } = await getSupabase().auth.exchangeCodeForSession(code);
         if (error) {
           setErrorMessage(error.message);
           setState('error');
@@ -117,15 +115,30 @@ function ResetPasswordContent() {
         }
         return;
       }
+
+      // Priority 3: OTP flow (?token_hash=xxx&type=recovery)
+      const tokenHash = searchParams.get('token_hash');
+      const type = searchParams.get('type');
+      if (tokenHash && type === 'recovery') {
+        const { error } = await getSupabase().auth.verifyOtp({
+          token_hash: tokenHash,
+          type: 'recovery',
+        });
+        if (error) {
+          setErrorMessage(error.message);
+          setState('error');
+        } else {
+          setState('ready');
+        }
+        return;
+      }
+
+      setState('no-token');
     }
 
-    // No token found
-    setState('no-token');
-  }, [searchParams]);
-
-  useEffect(() => {
     verifyToken();
-  }, [verifyToken]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Run once — tokens are captured at mount time, not on re-renders
 
   function validate(): boolean {
     const errors: FormErrors = {};
@@ -146,7 +159,7 @@ function ResetPasswordContent() {
     return Object.keys(errors).length === 0;
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!validate()) return;
 
