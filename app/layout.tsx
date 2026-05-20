@@ -3,13 +3,13 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'ANGLR — Fishing App',
-    template: '%s | ANGLR',
+    default: 'FishForge — Fishing App',
+    template: '%s | FishForge',
   },
   description: 'The smarter fishing companion. Log catches, track hotspots, and level up your angling.',
-  applicationName: 'ANGLR',
+  applicationName: 'FishForge',
   keywords: ['fishing', 'fishing app', 'catch log', 'fishing spots', 'angling'],
-  authors: [{ name: 'ANGLR' }],
+  authors: [{ name: 'FishForge' }],
   robots: 'noindex, nofollow',
 };
 

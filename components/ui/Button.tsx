@@ -14,8 +14,8 @@ const variantClasses: Record<string, string> = {
   primary: 'btn-primary',
   secondary: [
     'inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200',
-    'text-anglr-text-primary border border-anglr-border bg-anglr-surface-2/50',
-    'hover:bg-anglr-surface-2 hover:border-white/15 disabled:opacity-50 disabled:cursor-not-allowed',
+    'text-fishforge-text-primary border border-fishforge-border bg-fishforge-surface-2/50',
+    'hover:bg-fishforge-surface-2 hover:border-white/15 disabled:opacity-50 disabled:cursor-not-allowed',
   ].join(' '),
   ghost: 'btn-ghost',
   danger: [

@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Shield, ChevronRight } from 'lucide-react';
-import AnglrLogo from '@/components/AnglrLogo';
+import FishForgeLogo from '@/components/FishForgeLogo';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: 'ANGLR Privacy Policy — how we collect, use, and protect your data.',
+  description: 'FishForge Privacy Policy — how we collect, use, and protect your data.',
   robots: 'index, follow',
 };
 
 const LAST_UPDATED = 'April 21, 2025';
-const CONTACT_EMAIL = 'anglr.contact@gmail.com';
+const CONTACT_EMAIL = 'contact@fishforgeapp.com';
 
 const sections = [
   { id: 'collection', label: 'Data Collection' },
@@ -31,15 +31,15 @@ export default function PrivacyPage() {
   return (
     <div className="min-h-screen">
       {/* ── Top nav ── */}
-      <header className="sticky top-0 z-50 border-b border-anglr-border/60 bg-anglr-bg/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-fishforge-border/60 bg-fishforge-bg/80 backdrop-blur-xl">
         <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-          <AnglrLogo size="sm" href="/" />
+          <FishForgeLogo size="sm" href="/" />
           <nav className="hidden md:flex items-center gap-1">
             {sections.slice(0, 4).map((s) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className="px-3 py-1.5 text-xs font-medium text-anglr-text-muted hover:text-anglr-text-secondary rounded-lg hover:bg-anglr-surface/60 transition-all"
+                className="px-3 py-1.5 text-xs font-medium text-fishforge-text-muted hover:text-fishforge-text-secondary rounded-lg hover:bg-fishforge-surface/60 transition-all"
               >
                 {s.label}
               </a>
@@ -47,7 +47,7 @@ export default function PrivacyPage() {
           </nav>
           <Link
             href="/reset-password"
-            className="hidden sm:inline-flex items-center gap-1 text-xs text-anglr-text-muted hover:text-anglr-text-secondary transition-colors"
+            className="hidden sm:inline-flex items-center gap-1 text-xs text-fishforge-text-muted hover:text-fishforge-text-secondary transition-colors"
           >
             <Shield size={12} />
             Reset Password
@@ -60,7 +60,7 @@ export default function PrivacyPage() {
           {/* ── Sidebar TOC (desktop) ── */}
           <aside className="hidden lg:block">
             <div className="sticky top-28">
-              <p className="text-xs font-semibold uppercase tracking-widest text-anglr-text-muted mb-4">
+              <p className="text-xs font-semibold uppercase tracking-widest text-fishforge-text-muted mb-4">
                 Contents
               </p>
               <nav className="space-y-1">
@@ -68,11 +68,11 @@ export default function PrivacyPage() {
                   <a
                     key={s.id}
                     href={`#${s.id}`}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-anglr-text-muted hover:text-anglr-text-secondary hover:bg-anglr-surface/50 transition-all group"
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-fishforge-text-muted hover:text-fishforge-text-secondary hover:bg-fishforge-surface/50 transition-all group"
                   >
                     <ChevronRight
                       size={12}
-                      className="text-anglr-blue opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
+                      className="text-fishforge-blue opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
                     />
                     {s.label}
                   </a>
@@ -80,11 +80,11 @@ export default function PrivacyPage() {
               </nav>
 
               {/* Contact card */}
-              <div className="mt-8 p-4 rounded-xl bg-anglr-surface/50 border border-anglr-border">
-                <p className="text-xs font-semibold text-anglr-text-secondary mb-1">Questions?</p>
+              <div className="mt-8 p-4 rounded-xl bg-fishforge-surface/50 border border-fishforge-border">
+                <p className="text-xs font-semibold text-fishforge-text-secondary mb-1">Questions?</p>
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
-                  className="text-xs text-anglr-blue hover:text-blue-400 transition-colors break-all"
+                  className="text-xs text-fishforge-blue hover:text-blue-400 transition-colors break-all"
                 >
                   {CONTACT_EMAIL}
                 </a>
@@ -95,30 +95,30 @@ export default function PrivacyPage() {
           {/* ── Main content ── */}
           <main className="min-w-0">
             {/* Hero header */}
-            <div className="mb-10 pb-8 border-b border-anglr-border">
+            <div className="mb-10 pb-8 border-b border-fishforge-border">
               <div className="flex items-center gap-3 mb-4">
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-anglr-blue/10 border border-anglr-blue/20">
-                  <Shield size={20} className="text-anglr-blue" />
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-fishforge-blue/10 border border-fishforge-blue/20">
+                  <Shield size={20} className="text-fishforge-blue" />
                 </div>
-                <span className="text-xs font-semibold uppercase tracking-widest text-anglr-text-muted">
+                <span className="text-xs font-semibold uppercase tracking-widest text-fishforge-text-muted">
                   Legal
                 </span>
               </div>
-              <h1 className="text-3xl sm:text-4xl font-extrabold text-anglr-text-primary tracking-tight mb-3">
+              <h1 className="text-3xl sm:text-4xl font-extrabold text-fishforge-text-primary tracking-tight mb-3">
                 Privacy Policy
               </h1>
-              <p className="text-sm text-anglr-text-secondary leading-relaxed max-w-xl">
-                Your privacy matters to us. This policy explains exactly what data ANGLR collects,
+              <p className="text-sm text-fishforge-text-secondary leading-relaxed max-w-xl">
+                Your privacy matters to us. This policy explains exactly what data FishForge collects,
                 why we collect it, and how you can control it.
               </p>
-              <p className="text-xs text-anglr-text-muted mt-4">
-                Last updated: <strong className="text-anglr-text-secondary">{LAST_UPDATED}</strong>
+              <p className="text-xs text-fishforge-text-muted mt-4">
+                Last updated: <strong className="text-fishforge-text-secondary">{LAST_UPDATED}</strong>
                 &nbsp;·&nbsp; Effective immediately
               </p>
 
               {/* Mobile TOC */}
-              <div className="mt-6 p-4 rounded-xl bg-anglr-surface/50 border border-anglr-border lg:hidden">
-                <p className="text-xs font-semibold uppercase tracking-widest text-anglr-text-muted mb-3">
+              <div className="mt-6 p-4 rounded-xl bg-fishforge-surface/50 border border-fishforge-border lg:hidden">
+                <p className="text-xs font-semibold uppercase tracking-widest text-fishforge-text-muted mb-3">
                   Jump to
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -126,7 +126,7 @@ export default function PrivacyPage() {
                     <a
                       key={s.id}
                       href={`#${s.id}`}
-                      className="text-xs text-anglr-blue bg-anglr-blue/10 border border-anglr-blue/20 px-3 py-1 rounded-full hover:bg-anglr-blue/20 transition-colors"
+                      className="text-xs text-fishforge-blue bg-fishforge-blue/10 border border-fishforge-blue/20 px-3 py-1 rounded-full hover:bg-fishforge-blue/20 transition-colors"
                     >
                       {s.label}
                     </a>
@@ -136,12 +136,12 @@ export default function PrivacyPage() {
             </div>
 
             {/* ── Article content ── */}
-            <article className="prose-anglr space-y-2">
+            <article className="prose-fishforge space-y-2">
 
               {/* Intro */}
               <p>
-                ANGLR (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is committed to protecting your personal
-                information. This Privacy Policy applies to the ANGLR mobile application and associated web
+                FishForge (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is committed to protecting your personal
+                information. This Privacy Policy applies to the FishForge mobile application and associated web
                 services (collectively, the &quot;Service&quot;). By using the Service, you agree to the
                 collection and use of information in accordance with this policy.
               </p>
@@ -152,7 +152,7 @@ export default function PrivacyPage() {
 
               <h3>Account Information</h3>
               <p>
-                When you create an ANGLR account we collect:
+                When you create a FishForge account we collect:
               </p>
               <ul>
                 <li>Email address (used for authentication and notifications)</li>
@@ -162,7 +162,7 @@ export default function PrivacyPage() {
 
               <h3>Fishing & Activity Data</h3>
               <p>
-                The core of ANGLR is your catch and trip data. We store what you choose to log:
+                The core of FishForge is your catch and trip data. We store what you choose to log:
               </p>
               <ul>
                 <li>Catch records: species, weight, length, bait/lure, date and time</li>
@@ -194,7 +194,7 @@ export default function PrivacyPage() {
 
               <p>We use the information we collect solely to:</p>
               <ul>
-                <li>Create and manage your ANGLR account</li>
+                <li>Create and manage your FishForge account</li>
                 <li>Store, sync, and display your fishing logs across your devices</li>
                 <li>Generate personalized statistics and insights (catch trends, best spots, seasonal patterns)</li>
                 <li>Send transactional emails — password resets, account security alerts (no marketing without consent)</li>
@@ -274,12 +274,12 @@ export default function PrivacyPage() {
               <p>
                 We may disclose your information if required by law, court order, or government authority,
                 or if we believe disclosure is necessary to protect the rights, property, or safety of
-                ANGLR, our users, or the public.
+                FishForge, our users, or the public.
               </p>
 
               <h3>Business Transfers</h3>
               <p>
-                If ANGLR is acquired or merges with another company, your data may be transferred as
+                If FishForge is acquired or merges with another company, your data may be transferred as
                 part of that transaction. We will notify you via email before your data becomes subject
                 to a different privacy policy.
               </p>
@@ -339,7 +339,7 @@ export default function PrivacyPage() {
               <h2>6. Children&apos;s Privacy</h2>
 
               <p>
-                ANGLR is not directed to children under the age of 13 (or 16 in the EU). We do not
+                FishForge is not directed to children under the age of 13 (or 16 in the EU). We do not
                 knowingly collect personal information from children. If you believe a child has provided
                 us with personal information, please contact us immediately at{' '}
                 <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> and we will delete it promptly.
@@ -372,29 +372,29 @@ export default function PrivacyPage() {
                 personal data, please reach out:
               </p>
 
-              <div className="not-prose mt-4 p-5 rounded-2xl bg-anglr-surface/60 border border-anglr-border space-y-3">
+              <div className="not-prose mt-4 p-5 rounded-2xl bg-fishforge-surface/60 border border-fishforge-border space-y-3">
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-anglr-blue/10 border border-anglr-blue/20 flex items-center justify-center shrink-0 mt-0.5">
-                    <Shield size={14} className="text-anglr-blue" />
+                  <div className="w-8 h-8 rounded-lg bg-fishforge-blue/10 border border-fishforge-blue/20 flex items-center justify-center shrink-0 mt-0.5">
+                    <Shield size={14} className="text-fishforge-blue" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-anglr-text-primary">ANGLR Privacy Team</p>
+                    <p className="text-sm font-semibold text-fishforge-text-primary">FishForge Privacy Team</p>
                     <a
                       href={`mailto:${CONTACT_EMAIL}`}
-                      className="text-sm text-anglr-blue hover:text-blue-400 transition-colors"
+                      className="text-sm text-fishforge-blue hover:text-blue-400 transition-colors"
                     >
                       {CONTACT_EMAIL}
                     </a>
-                    <p className="text-xs text-anglr-text-muted mt-1">
+                    <p className="text-xs text-fishforge-text-muted mt-1">
                       We aim to respond to all privacy requests within 5 business days.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <p className="mt-6 text-xs text-anglr-text-muted">
+              <p className="mt-6 text-xs text-fishforge-text-muted">
                 This privacy policy was last reviewed and updated on{' '}
-                <strong className="text-anglr-text-secondary">{LAST_UPDATED}</strong>.
+                <strong className="text-fishforge-text-secondary">{LAST_UPDATED}</strong>.
               </p>
             </article>
           </main>
@@ -402,21 +402,21 @@ export default function PrivacyPage() {
       </div>
 
       {/* ── Footer ── */}
-      <footer className="mt-16 border-t border-anglr-border py-8">
+      <footer className="mt-16 border-t border-fishforge-border py-8">
         <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <AnglrLogo size="sm" />
+          <FishForgeLogo size="sm" />
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="text-xs text-anglr-text-muted hover:text-anglr-text-secondary transition-colors">
+            <Link href="/privacy" className="text-xs text-fishforge-text-muted hover:text-fishforge-text-secondary transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/reset-password" className="text-xs text-anglr-text-muted hover:text-anglr-text-secondary transition-colors">
+            <Link href="/reset-password" className="text-xs text-fishforge-text-muted hover:text-fishforge-text-secondary transition-colors">
               Reset Password
             </Link>
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-xs text-anglr-text-muted hover:text-anglr-text-secondary transition-colors">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-xs text-fishforge-text-muted hover:text-fishforge-text-secondary transition-colors">
               Contact
             </a>
           </div>
-          <p className="text-xs text-anglr-text-muted">© {new Date().getFullYear()} ANGLR. All rights reserved.</p>
+          <p className="text-xs text-fishforge-text-muted">© {new Date().getFullYear()} FishForge. All rights reserved.</p>
         </div>
       </footer>
     </div>

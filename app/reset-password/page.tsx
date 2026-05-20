@@ -7,7 +7,7 @@ import { CheckCircle2, XCircle, ShieldAlert, ArrowLeft, Lock } from 'lucide-reac
 import { getSupabase } from '@/lib/supabase';
 
 export const dynamic = 'force-dynamic';
-import AnglrLogo from '@/components/AnglrLogo';
+import FishForgeLogo from '@/components/FishForgeLogo';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import Card from '@/components/ui/Card';
@@ -40,12 +40,12 @@ function PasswordStrengthBar({ password }: { password: string }) {
           <div
             key={i}
             className={`h-1 flex-1 rounded-full transition-all duration-300 ${
-              i < strength ? colors[strength - 1] : 'bg-anglr-border'
+              i < strength ? colors[strength - 1] : 'bg-fishforge-border'
             }`}
           />
         ))}
       </div>
-      <p className="text-xs text-anglr-text-muted">
+      <p className="text-xs text-fishforge-text-muted">
         Strength:{' '}
         <span
           className={
@@ -178,18 +178,18 @@ function ResetPasswordContent() {
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
       {/* Header logo */}
       <div className="mb-10 animate-fade-in">
-        <AnglrLogo size="lg" />
+        <FishForgeLogo size="lg" />
       </div>
 
       <div className="w-full max-w-md animate-slide-up">
         {/* ── Verifying state ── */}
         {state === 'verifying' && (
           <Card className="text-center py-14">
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-anglr-surface-2 mb-5 mx-auto">
-              <div className="w-6 h-6 rounded-full border-2 border-anglr-blue border-t-transparent animate-spin" />
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-fishforge-surface-2 mb-5 mx-auto">
+              <div className="w-6 h-6 rounded-full border-2 border-fishforge-blue border-t-transparent animate-spin" />
             </div>
-            <h1 className="text-lg font-semibold text-anglr-text-primary mb-1">Verifying link</h1>
-            <p className="text-sm text-anglr-text-muted">Just a moment…</p>
+            <h1 className="text-lg font-semibold text-fishforge-text-primary mb-1">Verifying link</h1>
+            <p className="text-sm text-fishforge-text-muted">Just a moment…</p>
           </Card>
         )}
 
@@ -199,13 +199,13 @@ function ResetPasswordContent() {
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-orange-500/10 mb-5 mx-auto">
               <ShieldAlert size={26} className="text-orange-400" />
             </div>
-            <h1 className="text-xl font-bold text-anglr-text-primary mb-2">Invalid Link</h1>
-            <p className="text-sm text-anglr-text-secondary mb-8 max-w-xs mx-auto">
-              This page requires a valid password reset link. Request a new one from the ANGLR app.
+            <h1 className="text-xl font-bold text-fishforge-text-primary mb-2">Invalid Link</h1>
+            <p className="text-sm text-fishforge-text-secondary mb-8 max-w-xs mx-auto">
+              This page requires a valid password reset link. Request a new one from the FishForge app.
             </p>
             <div className="flex flex-col gap-3">
-              <p className="text-xs text-anglr-text-muted">
-                Open the ANGLR app → Profile → Forgot Password
+              <p className="text-xs text-fishforge-text-muted">
+                Open the FishForge app → Profile → Forgot Password
               </p>
             </div>
           </Card>
@@ -217,17 +217,17 @@ function ResetPasswordContent() {
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-red-500/10 mb-5 mx-auto">
               <XCircle size={28} className="text-red-400" />
             </div>
-            <h1 className="text-xl font-bold text-anglr-text-primary mb-2">
+            <h1 className="text-xl font-bold text-fishforge-text-primary mb-2">
               {errorMessage.toLowerCase().includes('expired') ? 'Link Expired' : 'Something went wrong'}
             </h1>
-            <p className="text-sm text-anglr-text-secondary mb-2 max-w-xs mx-auto">
+            <p className="text-sm text-fishforge-text-secondary mb-2 max-w-xs mx-auto">
               {errorMessage.toLowerCase().includes('expired')
                 ? 'This password reset link has expired. Reset links are valid for 1 hour.'
                 : errorMessage || 'An unexpected error occurred. Please try again.'}
             </p>
             {errorMessage.toLowerCase().includes('expired') && (
-              <p className="text-xs text-anglr-text-muted mt-4 mb-6">
-                Open the ANGLR app and request a new reset link.
+              <p className="text-xs text-fishforge-text-muted mt-4 mb-6">
+                Open the FishForge app and request a new reset link.
               </p>
             )}
             <div className="mt-6 p-3 rounded-xl bg-red-500/8 border border-red-500/15 text-left">
@@ -241,15 +241,15 @@ function ResetPasswordContent() {
           <Card>
             {/* Icon */}
             <div className="flex justify-center mb-6">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-anglr-blue/10 border border-anglr-blue/20">
-                <Lock size={24} className="text-anglr-blue" />
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-fishforge-blue/10 border border-fishforge-blue/20">
+                <Lock size={24} className="text-fishforge-blue" />
               </div>
             </div>
 
             <div className="text-center mb-8">
-              <h1 className="text-2xl font-bold text-anglr-text-primary mb-1.5">Reset your password</h1>
-              <p className="text-sm text-anglr-text-secondary">
-                Choose a strong, unique password for your ANGLR account.
+              <h1 className="text-2xl font-bold text-fishforge-text-primary mb-1.5">Reset your password</h1>
+              <p className="text-sm text-fishforge-text-secondary">
+                Choose a strong, unique password for your FishForge account.
               </p>
             </div>
 
@@ -286,8 +286,8 @@ function ResetPasswordContent() {
               />
 
               {/* Requirements hint */}
-              <div className="p-3.5 rounded-xl bg-anglr-surface-2/50 border border-anglr-border space-y-1.5">
-                <p className="text-xs font-semibold text-anglr-text-muted uppercase tracking-wider mb-1">
+              <div className="p-3.5 rounded-xl bg-fishforge-surface-2/50 border border-fishforge-border space-y-1.5">
+                <p className="text-xs font-semibold text-fishforge-text-muted uppercase tracking-wider mb-1">
                   Requirements
                 </p>
                 {[
@@ -299,12 +299,12 @@ function ResetPasswordContent() {
                   <div key={label as string} className="flex items-center gap-2">
                     <div
                       className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors duration-200 ${
-                        met ? 'bg-anglr-green' : 'bg-anglr-text-muted'
+                        met ? 'bg-fishforge-green' : 'bg-fishforge-text-muted'
                       }`}
                     />
                     <span
                       className={`text-xs transition-colors duration-200 ${
-                        met ? 'text-anglr-text-secondary' : 'text-anglr-text-muted'
+                        met ? 'text-fishforge-text-secondary' : 'text-fishforge-text-muted'
                       }`}
                     >
                       {label as string}
@@ -332,13 +332,13 @@ function ResetPasswordContent() {
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/10 mb-6 mx-auto">
               <CheckCircle2 size={32} className="text-green-400" />
             </div>
-            <h1 className="text-2xl font-bold text-anglr-text-primary mb-2">Password updated!</h1>
-            <p className="text-sm text-anglr-text-secondary mb-8 max-w-xs mx-auto">
-              Your ANGLR password has been changed successfully. You can now log in with your new password.
+            <h1 className="text-2xl font-bold text-fishforge-text-primary mb-2">Password updated!</h1>
+            <p className="text-sm text-fishforge-text-secondary mb-8 max-w-xs mx-auto">
+              Your FishForge password has been changed successfully. You can now log in with your new password.
             </p>
             <div className="p-4 rounded-2xl bg-green-500/8 border border-green-500/15 mb-6">
               <p className="text-xs text-green-400">
-                Return to the ANGLR app and sign in with your new password.
+                Return to the FishForge app and sign in with your new password.
               </p>
             </div>
           </Card>
@@ -348,12 +348,12 @@ function ResetPasswordContent() {
         <div className="mt-8 text-center">
           <Link
             href="/privacy"
-            className="text-xs text-anglr-text-muted hover:text-anglr-text-secondary transition-colors"
+            className="text-xs text-fishforge-text-muted hover:text-fishforge-text-secondary transition-colors"
           >
             Privacy Policy
           </Link>
-          <span className="mx-2 text-anglr-text-muted text-xs">·</span>
-          <span className="text-xs text-anglr-text-muted">© {new Date().getFullYear()} ANGLR</span>
+          <span className="mx-2 text-fishforge-text-muted text-xs">·</span>
+          <span className="text-xs text-fishforge-text-muted">© {new Date().getFullYear()} FishForge</span>
         </div>
       </div>
 
@@ -361,7 +361,7 @@ function ResetPasswordContent() {
       <div className="fixed bottom-6 left-6">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs text-anglr-text-muted hover:text-anglr-text-secondary transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs text-fishforge-text-muted hover:text-fishforge-text-secondary transition-colors"
         >
           <ArrowLeft size={12} />
           Back
@@ -374,11 +374,11 @@ function ResetPasswordContent() {
 function LoadingFallback() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
-      <AnglrLogo size="lg" className="mb-10" />
+      <FishForgeLogo size="lg" className="mb-10" />
       <div className="w-full max-w-md">
         <Card className="text-center py-14">
-          <div className="w-8 h-8 rounded-full border-2 border-anglr-blue border-t-transparent animate-spin mx-auto mb-4" />
-          <p className="text-sm text-anglr-text-muted">Loading…</p>
+          <div className="w-8 h-8 rounded-full border-2 border-fishforge-blue border-t-transparent animate-spin mx-auto mb-4" />
+          <p className="text-sm text-fishforge-text-muted">Loading…</p>
         </Card>
       </div>
     </div>

@@ -11,7 +11,7 @@ export function getSupabase(): SupabaseClient {
 
   if (!url || !key) {
     throw new Error(
-      '[ANGLR] Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY. ' +
+      '[FishForge] Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY. ' +
         'Add them to .env.local (local) or Vercel Environment Variables (production).'
     );
   }

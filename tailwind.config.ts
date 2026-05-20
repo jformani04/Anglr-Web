@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        anglr: {
+        fishforge: {
           bg: '#060d1a',
           surface: '#0d1f35',
           'surface-2': '#122843',

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-interface AnglrLogoProps {
+interface FishForgeLogoProps {
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   className?: string;
@@ -66,7 +66,7 @@ function FishHookIcon({ size }: { size: number }) {
   );
 }
 
-export default function AnglrLogo({ size = 'md', href, className = '' }: AnglrLogoProps) {
+export default function FishForgeLogo({ size = 'md', href, className = '' }: FishForgeLogoProps) {
   const { icon, text } = sizes[size];
 
   const content = (
@@ -82,7 +82,7 @@ export default function AnglrLogo({ size = 'md', href, className = '' }: AnglrLo
           letterSpacing: '-0.02em',
         }}
       >
-        ANGLR
+        FishForge
       </span>
     </span>
   );

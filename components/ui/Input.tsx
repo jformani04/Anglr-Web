@@ -21,7 +21,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="text-xs font-semibold tracking-wider uppercase text-anglr-text-secondary"
+            className="text-xs font-semibold tracking-wider uppercase text-fishforge-text-secondary"
           >
             {label}
           </label>
@@ -47,7 +47,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             <button
               type="button"
               onClick={() => setShowPassword((v) => !v)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-anglr-text-muted hover:text-anglr-text-secondary transition-colors p-0.5"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-fishforge-text-muted hover:text-fishforge-text-secondary transition-colors p-0.5"
               tabIndex={-1}
               aria-label={showPassword ? 'Hide password' : 'Show password'}
             >
@@ -64,7 +64,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
 
         {hint && !error && (
-          <p className="text-xs text-anglr-text-muted mt-0.5">{hint}</p>
+          <p className="text-xs text-fishforge-text-muted mt-0.5">{hint}</p>
         )}
       </div>
     );
